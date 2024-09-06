@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{Ob as s,aa as o,qb as r,rb as i,sb as a}from"./chunk-HHRL5WPK.mjs";import"./chunk-VVCT4QZE.mjs";var p=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-not-found"]],standalone:!0,features:[s],decls:2,vars:0,consts:[[1,"my-4"],["src","./assets/images/404-error.jpg","alt","error",1,"w-50","m-auto","d-grid"]],template:function(n,c){n&1&&(r(0,"section",0),a(1,"img",1),i())}});let t=e;return t})();export{p as NotFoundComponent};
