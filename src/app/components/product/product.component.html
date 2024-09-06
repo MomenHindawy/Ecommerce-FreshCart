@@ -1,0 +1,47 @@
+<section class="mb-4">
+    <div class="container">
+        <h2 class="py-3 mt-5">
+            All Products
+        </h2>
+        <input [(ngModel)]="wordSearch" type="search" class="form-control w-50 m-auto my-3 "
+            placeholder="search by name...">
+        <div class="row g-2">
+            @for (product of productsList() | search : wordSearch ; track product.id) {
+
+            <div class=" col-lg-2  col-md-3 col-6 position-relative ">
+                <span class="hear-Fav  position-absolute">
+                    @if(!wishData().includes(product.id)){
+                    <i class="fa-regular cr fa-heart cr " (click)="addWish(product.id)"></i>
+                    }@if(wishData().includes(product.id)){
+                    <i class="fa-solid cr text-danger fa-heart cr " (click)="deleteProduct(product.id)"></i>
+                    }
+                </span>
+                <div class="product p-2 ">
+                    <div [routerLink]="['/details',product.id]" class="re-size">
+                        <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+                        <h3 class="small text-main">
+                            {{product.category.name}}
+                        </h3>
+                        <h4 class=" ">{{product.title.split(" ",2).join(" ")}}</h4>
+                        <div class=" m-screen">
+                            <span class="fs-6">{{product.price | currency : 'GBP'}}</span>
+                            <div class="d-flex  ">
+                                @for (Num of [1,2,3,4,5].slice(0 , product.ratingsAverage); track $index) {
+                                <span><i class="fas fa-star rating-color "></i></span>}
+                                @if (product.ratingsAverage % 1 !==0){
+                                <span><i class="fas fa-star-half-stroke rating-color"></i></span>}
+                                <span class="text-muted ">{{product.ratingsAverage}}</span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <button class="btn-main w-100" (click)="addCart(product.id)">Add To Cart</button>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+
+</section>

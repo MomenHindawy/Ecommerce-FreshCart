@@ -1,0 +1,46 @@
+<section class="shadow rounded-3 p-3 my-4 bg-main-light w-75 m-auto">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+            <div>
+                <h1 class="h2 "> Shop Cart <i class="fa-solid fa-cart-shopping text-main"></i></h1>
+                <p class="text-main"> Total Cart Price : {{displayItem().totalCartPrice| currency : 'GBP'}} </p>
+            </div>
+
+            <button (click)="clearCart()" class="btn btn-danger p-2 my-2">Clear Cart</button>
+        </div>
+
+        @for (item of displayItem().products; track item.product.id) {
+        <div class="row">
+            <div class="col-md-1">
+                <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+            </div>
+            <div class="col-md d-flex justify-content-between align-items-center">
+                <div>
+                    <h3 class="h5">{{item.product.title}}</h3>
+                    <p class=" m-1 text-main">Price:{{item.price | currency : 'GBP'}}</p>
+                    <span (click)="DeleteItem(item.product.id)" class="cr"><i
+                            class="fa-solid fa-trash text-danger px-1"></i><a>Remove</a></span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <span (click)=" updateProductCount(item.product.id , item.count + 1 )"
+                        class=" fs-5 border-1 rounded text-main cr"><i class="fa-solid fa-plus-square"></i></span>
+                    <span class="fs-4">{{item.count}}</span>
+                    <span (click)="updateProductCount(item.product.id , item.count - 1 )"
+                        class=" fs-5 border-black rounded text-danger cr"><i
+                            class="fa-solid fa-minus-square"></i></span>
+                </div>
+            </div>
+        </div>
+        <hr>
+        }
+
+        <p (click)="goTOShopping()" class="text-center cr ">Shopping Now <i
+                class="fa-solid fa-cart-shopping text-main"></i>
+        </p>
+
+
+        <button class="btn-main mt-2" [routerLink]="['/order' ,displayItem()._id]">Order</button>
+    </div>
+
+
+</section>

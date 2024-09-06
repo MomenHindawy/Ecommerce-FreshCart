@@ -1,0 +1,12 @@
+<section class="my-5">
+    <div class="container">
+        <div class="row ">
+            @for (brand of brands(); track $index) {
+            <div class="col-md-3 gap-2 border">
+                <img [routerLink]="['/detbrand',brand._id]" [src]="brand.image" class="w-100" [alt]="brand.name">
+            </div>
+            }
+        </div>
+    </div>
+
+</section>

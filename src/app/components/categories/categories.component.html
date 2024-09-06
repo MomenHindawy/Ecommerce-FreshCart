@@ -1,0 +1,24 @@
+<section class="m-5">
+
+    <div class="container">
+        <div class="row">
+            @for (category of AllCategories; track category._id) {
+
+            <div class="col-md-3">
+                <img [src]="category.image" [routerLink]="['/detailsCat',category._id]"
+                    routerLinkActive="router-link-active" height="300px" [alt]="category.name" class="w-100">
+                <h3 class="text-main h6">{{category.name}}</h3>
+            </div>
+
+            }
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</section>
