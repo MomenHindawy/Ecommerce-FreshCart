@@ -30,7 +30,7 @@ export class AuthService {
   saveUserData(): any {
     if (localStorage.getItem('UserToken') !== null) {
       return this.userData = jwtDecode(localStorage.getItem('UserToken')!)
-    } else ("baiza")
+    }
   };
   logOut(): void {
     localStorage.removeItem('UserToken');
